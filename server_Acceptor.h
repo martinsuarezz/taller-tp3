@@ -7,7 +7,7 @@ class Acceptor{
         Socket socket;
 
     public:
-        Acceptor(const char* port);
+        Acceptor(const char* port): socket(Socket()){};
 };
 
 #endif

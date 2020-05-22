@@ -19,7 +19,7 @@ void Socket::connect(const char* host, const char* service){
     hints.ai_flags = 0;
 
     if ((error = getaddrinfo(host, service, &hints, &results)) != 0)
-        throw OSError("Could not establish connection");
+        throw OSError("Could not establish connection", SHOW_ERR);
     
     for (rp = results; rp != NULL; rp = rp->ai_next) {
         s = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
@@ -33,7 +33,7 @@ void Socket::connect(const char* host, const char* service){
         }
     }
     freeaddrinfo(results);
-    throw OSError("Could not establish connection");
+    throw OSError("Could not establish connection", SHOW_ERR);
 }
 
 void Socket::send(const std::vector<char>& msg, size_t bytes){
@@ -45,7 +45,7 @@ void Socket::send(const std::vector<char>& msg, size_t bytes){
     while (sent < (ssize_t) bytes){
         status = ::send(this->socketfd, (const void*) message, bytes, 0);
         if (status <= 0)
-            throw OSError("Could not send information to server");
+            throw OSError("Could not send information to server", SHOW_ERR);
         sent += status;
     }
 }
@@ -57,7 +57,7 @@ void Socket::receive(std::vector<char>& buffer, size_t bytes){
     while (received < (ssize_t) bytes){
         status = recv(this->socketfd, character, 1, 0);
         if (status <= 0)
-            throw OSError("Could not receive more bytes from server");
+            throw OSError("Could not receive more bytes from server", SHOW_ERR);
         received += status;
         buffer.push_back(character[0]);
     }

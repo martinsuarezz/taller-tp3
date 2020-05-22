@@ -3,7 +3,8 @@
 #include "server_Server.h"
 
 void Server::run(){
-
+    for (int i = 0; i<20; i++)
+        std::cout << numbers.getNumber() << std::endl;
 }
 
 int main(int argc, char* argv[]){
