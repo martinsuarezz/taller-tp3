@@ -7,7 +7,10 @@ class Socket{
         int socketfd;
 
     public:
-        Socket(): socketfd(-1) {};
+        Socket(): socketfd(-1){};
+
+        // Cambia el file descriptor del socket
+        void set(int fd);
 
         // Se conecta a la dirección y puerto especificados.
         // Se lanza una excepción si falla.
@@ -22,10 +25,18 @@ class Socket{
         // en el vector recibido por referencia.
         void receive(std::vector<char>& buffer, size_t bytes);
 
+        // Escucha conexiones entrantes al puerto indicado.
+        void bindAndListen(const char* service);
+
+        // Acepta una conexión entrante y guarda el fd del socket
+        // en el socket recibido.
+        void accept(Socket& acceptedSocket);
+
         // Prohibo la copia de sockets
         Socket(const Socket&) = delete;
         Socket& operator=(const Socket&) = delete;
 
+        // Permito el pasaje por movimiento;
         Socket(Socket&&) = default;
         ~Socket();
 };

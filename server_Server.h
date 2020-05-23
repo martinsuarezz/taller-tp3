@@ -6,12 +6,13 @@
 
 class Server{
     private:
-        Acceptor acceptor;
         NumberList numbers;
+        Acceptor acceptor;
 
     public:
         Server(const char* port, const char* numbersFile):
-            acceptor(Acceptor(port)), numbers(NumberList(numbersFile)){};
+            numbers(NumberList(numbersFile)), 
+            acceptor(Acceptor(port, std::move(numbers))){};
 
         // Ejecuta el servidor.
         void run();
