@@ -10,8 +10,11 @@ Acceptor::Acceptor(const char* port, NumberList&& numbers):
 }
 
 void Acceptor::run(){
-    Socket newSocket;
-    socket.accept(newSocket);
+    Socket newSocket = socket.accept();
+    ClientHandler client = ClientHandler(std::move(newSocket), points);
+    client.run();
+    points.printStats();
+    return;
     while (continueExecution){
         std::vector<char> text;
         newSocket.receive(text, 3);

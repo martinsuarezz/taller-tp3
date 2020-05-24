@@ -3,7 +3,6 @@
 #include "server_NumberList.h"
 #include "server_Acceptor.h"
 
-
 class Server{
     private:
         NumberList numbers;

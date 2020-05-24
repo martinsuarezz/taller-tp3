@@ -36,10 +36,6 @@ void Socket::connect(const char* host, const char* service){
     throw OSError("Could not establish connection", SHOW_ERR);
 }
 
-void Socket::set(int fd){
-    this->socketfd = fd;
-}
-
 void Socket::send(const std::vector<char>& msg, size_t bytes){
     if (bytes == 0)
         bytes = msg.size();
@@ -91,7 +87,7 @@ void Socket::bindAndListen(const char* service){
         if (bind(sfd, rp->ai_addr, rp->ai_addrlen) == 0 && listen(sfd, 1) == 0)
             break;                  /* Success */
 
-        close(sfd);
+        ::close(sfd);
     }
 
     if (rp == NULL)
@@ -101,12 +97,17 @@ void Socket::bindAndListen(const char* service){
     this->socketfd = sfd;
 }
 
-void Socket::accept(Socket& acceptedSocket){
+Socket Socket::accept(){
     int newSocketfd;
     if ((newSocketfd = ::accept(this->socketfd, NULL, NULL)) == -1)
         throw OSError("Failed to accept a conection", SHOW_ERR);
     
-    acceptedSocket.set(newSocketfd);
+    return std::move(Socket(newSocketfd));
+}
+
+Socket::Socket(Socket&& other){
+    this->socketfd = other.socketfd;
+    other.socketfd = -1;
 }
 
 Socket::~Socket(){
