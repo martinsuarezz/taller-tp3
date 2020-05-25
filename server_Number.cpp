@@ -1,5 +1,6 @@
 #include "server_Number.h"
 #include "common_OSError.h"
+#include <stdlib.h>
 #include <string>
 
 Number Number::operator=(int number){

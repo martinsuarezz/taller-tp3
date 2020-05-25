@@ -1,6 +1,7 @@
 #ifndef SOCKET_H
 #define SOCKET_H
 #include <vector>
+#include <stdlib.h>
 
 class Socket{
     private:

@@ -1,6 +1,7 @@
 #include "client_Communicator.h"
 #include <string>
 #include <string.h>
+#include <vector>
 #include <arpa/inet.h>
 #include <iostream>
 
@@ -19,9 +20,10 @@ std::string Communicator::send(std::string command){
     std::string formatedAnswer;
     Encoder encoder;
     std::vector<char> encoded = encoder.encode(command);
-    if (encoded.empty())
-        formatedAnswer = "Error: comando inválido. Escriba AYUDA para obtener ayuda";
-    else {
+    if (encoded.empty()){
+        formatedAnswer = "Error: comando inválido. "
+                        "Escriba AYUDA para obtener ayuda";
+    } else{
         std::vector<char> answer;
         std::vector<char> answerSize;
         socket.send(encoded);

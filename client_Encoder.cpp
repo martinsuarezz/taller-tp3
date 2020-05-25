@@ -1,6 +1,7 @@
 #include "client_Encoder.h"
 #include <arpa/inet.h>
 #include <string.h>
+#include <stdlib.h>
 #include <iostream>
 #include "math.h"
 #define NUMBER_BYTES 2
