@@ -2,20 +2,7 @@
 #include <fstream>
 #include <string>
 #include "common_OSError.h"
-
-static bool hasRepeatedDigits(std::string(line)){
-    int histogram[10] = {0};
-    std::string digitString;
-    int digit;
-    for (size_t i = 0; i < line.size(); i++){
-        digitString = line[i];
-        digit = std::stoi(digitString);
-        histogram[digit]++;
-        if (histogram[digit] > 1)
-            return true;
-    }
-    return false;
-}
+#include "server_Number.h"
 
 uint16_t NumberList::parseNumber(std::string line){
     char digit;
@@ -24,12 +11,12 @@ uint16_t NumberList::parseNumber(std::string line){
         if (digit < '0' || digit > '9')
             throw OSError("Error: no se recibio un numero", 0);
     }
-    int number = std::stoi(line);
+    Number number = std::stoi(line);
     if (number < 100 || number > 999)
         throw OSError("Error: archivo con numeros fuera de rango", 0);
-    if (hasRepeatedDigits(line))
+    if (number.hasRepeatedDigits())
         throw OSError("Error: formato de los numeros invalidos", 0);
-    return number;
+    return (uint16_t) number;
 }
 
 NumberList::NumberList(const char* fileName): index(0){

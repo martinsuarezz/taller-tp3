@@ -20,6 +20,9 @@ class Number{
         bool operator<=(Number& other);
         bool operator>=(int number);
         bool operator>=(Number& other);
+        operator int () const;
+        operator uint16_t () const;
+        operator uint32_t () const;
         size_t ammountDigits();
         bool hasRepeatedDigits();
         int ammountSameDigitsSamePlace(int number);

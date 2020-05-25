@@ -10,8 +10,8 @@ void PointsTracker::addLoser(){
 }
 
 void PointsTracker::printStats(){
-    std::cout << "Estadísticas:\n\tGanadores: " << this->winners;
-    std::cout << "\n\tPerdedores: " << this->losers << "\n" << std::endl;
+    std::cout << "Estadísticas:\n\tGanadores:  " << this->winners;
+    std::cout << "\n\tPerdedores: " << this->losers << std::endl;
 }
 
 void PointsTracker::operator()(int result){

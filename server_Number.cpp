@@ -46,6 +46,19 @@ bool Number::operator<=(Number& other){
     return this->number <= other.number;
 }
 
+Number::operator int () const{
+    return this->number;
+}
+
+Number::operator uint16_t () const{
+    return (uint16_t) this->number;
+}
+
+Number::operator uint32_t () const{
+    return (uint32_t) this->number;
+}
+
+
 size_t Number::ammountDigits(){
     return (std::to_string(this->number)).size();
 } 
