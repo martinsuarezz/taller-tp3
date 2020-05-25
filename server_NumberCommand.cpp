@@ -14,8 +14,8 @@ static int charToInt(char* charNumber){
 }
 
 std::string NumberCommand::operator()(){
-    Number serverNumber = client.getNumberToGuess();
-    Number clientNumber = charToInt(command.data()+1);
+    Number serverNumber(client.getNumberToGuess());
+    Number clientNumber(charToInt(command.data()+1));
     std::string answer;
     if (clientNumber.ammountDigits() != 3 || clientNumber.hasRepeatedDigits()){
         answer = "Número inválido. Debe ser de 3 cifras no repetidas";

@@ -1,5 +1,6 @@
 #ifndef ACCEPTOR_H
 #define ACCEPTOR_H
+#include <vector>
 #include "common_Socket.h"
 #include "server_NumberList.h"
 #include "server_ClientHandler.h"

@@ -1,11 +1,11 @@
 #define _POSIX_C_SOURCE 200112L
-
-#include "common_Socket.h"
 #include <sys/types.h>
 #include <string.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <utility>
+#include "common_Socket.h"
 #include "common_OSError.h"
 
 void Socket::connect(const char* host, const char* service){

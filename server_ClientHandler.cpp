@@ -2,6 +2,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 #include <iostream>
+#include <algorithm>
 #include "common_OSError.h"
 #define MAX_TRIES 10
 
@@ -44,7 +45,6 @@ void ClientHandler::run(){
     catch(...){
         std::cerr << "Unespecified error" << std::endl;
     }
-    
 }
 
 int ClientHandler::getNumberToGuess(){

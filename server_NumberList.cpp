@@ -11,7 +11,7 @@ uint16_t NumberList::parseNumber(std::string line){
         if (digit < '0' || digit > '9')
             throw OSError("Error: no se recibio un numero", 0);
     }
-    Number number = std::stoi(line);
+    Number number(std::stoi(line));
     if (number < 100 || number > 999)
         throw OSError("Error: archivo con numeros fuera de rango", 0);
     if (number.hasRepeatedDigits())

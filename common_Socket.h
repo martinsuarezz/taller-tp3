@@ -6,10 +6,10 @@
 class Socket{
     private:
         int socketfd;
-        Socket(int socketfd): socketfd(socketfd){};
+        explicit Socket(int socketfd): socketfd(socketfd){}
 
     public:
-        Socket(): socketfd(-1){};
+        Socket(): socketfd(-1){}
 
         // Se conecta a la dirección y puerto especificados.
         // Se lanza una excepción si falla.

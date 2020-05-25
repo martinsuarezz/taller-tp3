@@ -1,7 +1,7 @@
 #include <iostream>
+#include <string>
 #include "common_OSError.h"
 #include "server_Server.h"
-#include <iostream>
 
 void Server::run(){
     acceptor.start();

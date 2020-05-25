@@ -8,7 +8,7 @@ class Client{
 
     public:
         Client(const char* hostname, const char* port): 
-                                    communicator(Communicator(hostname, port)){};
+                                communicator(Communicator(hostname, port)){}
 
         // Ejecuta el cliente.
         void run();

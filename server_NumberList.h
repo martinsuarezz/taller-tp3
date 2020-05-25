@@ -10,7 +10,7 @@ class NumberList{
         uint16_t parseNumber(std::string line);
 
     public:
-        NumberList(const char* fileName);
+        explicit NumberList(const char* fileName);
         int getNumber();
 };
 

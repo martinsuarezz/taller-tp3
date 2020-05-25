@@ -1,9 +1,12 @@
 #ifndef CLIENTHANDLER_H
 #define CLIENTHANDLER_H
+#include <stdbool.h>
+#include <string>
+#include <vector>
+#include <utility>
 #include "common_Socket.h"
 #include "server_PointsTracker.h"
 #include "server_Command.h"
-#include <stdbool.h>
 #include "server_Thread.h"
 
 class ClientHandler: public Thread{
@@ -21,7 +24,7 @@ class ClientHandler: public Thread{
                                             points(points),
                                             numberToGuess(number),
                                             continueExecution(true),
-                                            result(-1) {};
+                                            result(-1) {}
         void run();
         int getNumberToGuess();
         void setVictory();
@@ -33,7 +36,6 @@ class ClientHandler: public Thread{
         // Prohibo la copia de client handlers
         ClientHandler(const ClientHandler&) = delete;
         ClientHandler& operator=(const ClientHandler&) = delete;
-
 };
 
 #endif

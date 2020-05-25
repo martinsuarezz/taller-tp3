@@ -14,7 +14,7 @@ class Command{
     public:
         Command(ClientHandler& client, std::vector<char>& command):
                                                         client(client),
-                                                        command(command){};
+                                                        command(command){}
         static Command* getCommand(std::vector<char>& command, 
                                     ClientHandler& client);
         virtual std::string operator()() = 0;

@@ -7,8 +7,8 @@ class Number{
         int number;
     
     public:
-        Number(): number(0) {};
-        Number(int number): number(number) {};
+        Number(): number(0) {}
+        explicit Number(int number): number(number) {}
         Number operator=(int number);
         bool operator==(int number);
         bool operator==(Number& other);

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <utility>
 #include "common_OSError.h"
 
 Acceptor::Acceptor(const char* port, NumberList&& numbers): 
@@ -45,9 +46,7 @@ void Acceptor::run(){
             client->start();
             clients.push_back(client);
         }
-        catch (OSError& e){
-            
-        }
+        catch (OSError& e){}
         joinClientHandlers();
     }
     joinAndWaitClientHandlers();

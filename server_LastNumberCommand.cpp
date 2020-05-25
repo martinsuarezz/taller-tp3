@@ -14,14 +14,13 @@ static int charToInt(char* charNumber){
 }
 
 std::string LastNumberCommand::operator()(){
-    Number serverNumber = client.getNumberToGuess();
-    Number clientNumber = charToInt(command.data()+1);
+    Number serverNumber(client.getNumberToGuess());
+    Number clientNumber(charToInt(command.data()+1));
     std::string answer;
     if (serverNumber == clientNumber){
         answer = "Ganaste";
         client.setVictory();
-    }
-    else{
+    } else{
         answer = "Perdiste";
         client.setLose();
     }
