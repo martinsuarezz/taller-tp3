@@ -26,6 +26,9 @@ class Socket{
         // Escucha conexiones entrantes al puerto indicado.
         void bindAndListen(const char* service);
 
+        // Cierra el socket y lo coloca en un estado inválido.
+        void close();
+
         // Acepta una conexión entrante y guarda el fd del socket
         // en el socket recibido.
         Socket accept();

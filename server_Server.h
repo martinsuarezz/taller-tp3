@@ -11,7 +11,7 @@ class Server{
     public:
         Server(const char* port, const char* numbersFile):
             numbers(NumberList(numbersFile)), 
-            acceptor(Acceptor(port, std::move(numbers))){};
+            acceptor(std::move(Acceptor(port, std::move(numbers)))){};
 
         // Ejecuta el servidor.
         void run();

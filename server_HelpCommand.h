@@ -7,7 +7,7 @@ class HelpCommand: public Command{
     private:
 
     public:
-        HelpCommand(ClientHandler& client, std::vector<char> command): 
+        HelpCommand(ClientHandler& client, std::vector<char>& command): 
                                                 Command(client, command) {};
         std::string operator()();
 };

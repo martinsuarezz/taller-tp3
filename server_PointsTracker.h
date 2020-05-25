@@ -9,9 +9,10 @@ class PointsTracker{
 
     public:
         PointsTracker(): winners(0), losers(0) {};
-        void addWiner();
+        void addWinner();
         void addLoser();
         void printStats();
+        void operator()(int result);
 
 };
 

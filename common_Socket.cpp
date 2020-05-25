@@ -105,6 +105,12 @@ Socket Socket::accept(){
     return std::move(Socket(newSocketfd));
 }
 
+void Socket::close(){
+    ::shutdown(this->socketfd, SHUT_RDWR);
+    ::close(this->socketfd);
+    this->socketfd = -1;
+}
+
 Socket::Socket(Socket&& other){
     this->socketfd = other.socketfd;
     other.socketfd = -1;

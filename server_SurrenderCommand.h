@@ -8,10 +8,9 @@ class SurrenderCommand: public Command{
     private:
 
     public:
-        SurrenderCommand(ClientHandler& client, std::vector<char> command): 
+        SurrenderCommand(ClientHandler& client, std::vector<char>& command): 
                                                 Command(client, command) {};
         std::string operator()();
-        //~SurrenderCommand();
 };
 
 #endif

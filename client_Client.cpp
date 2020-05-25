@@ -7,7 +7,10 @@ void Client::run(){
     while (this->communicator.isRunning()){
         std::string command;
         std::getline(std::cin, command);
-        std::cout << this->communicator.send(command) << std::endl;
+        std::string answer = this->communicator.send(command);
+        std::cout << answer << std::endl;
+        if (answer == "Perdiste" || answer == "Ganaste")
+            break;
     }
 }
 

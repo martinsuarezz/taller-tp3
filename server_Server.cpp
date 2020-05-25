@@ -1,9 +1,17 @@
 #include <iostream>
 #include "common_OSError.h"
 #include "server_Server.h"
+#include <iostream>
 
 void Server::run(){
-    acceptor.run();
+    acceptor.start();
+    std::string input;
+    while (std::getline(std::cin, input)){
+        if (input == "q")
+            break;
+    }
+    acceptor.shutdown();
+    acceptor.join();
 }
 
 int main(int argc, char* argv[]){
