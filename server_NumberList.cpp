@@ -21,6 +21,8 @@ uint16_t NumberList::parseNumber(std::string line){
 
 NumberList::NumberList(const char* fileName): index(0){
     std::ifstream file(fileName);
+    if (file.fail())
+        throw OSError("Error al abrir el archivo de números", SHOW_ERR);
     std::string line;
 
     while (std::getline(file, line))
