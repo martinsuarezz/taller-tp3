@@ -11,8 +11,7 @@ class Acceptor: public Thread{
     private:
         Socket socket;
         NumberList numbers;
-        //bool continueExecution;
-        std::atomic<bool> continueExecution;
+        bool continueExecution;
         std::vector<ClientHandler*> clients;
         PointsTracker points;
         void joinClientHandlers();
