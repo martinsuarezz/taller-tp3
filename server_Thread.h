@@ -16,6 +16,9 @@ class Thread{
         // Se hace join del thread.
         void join();
 
+        // Devuelve si el hilo esta ejecutandose en paralelo.
+        bool joinable();
+
         // Las funciones que heredan de esta clase deben
         // implementar esta función. El thread realizará
         // lo que contenga esta función

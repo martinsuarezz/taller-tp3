@@ -118,5 +118,5 @@ Socket::Socket(Socket&& other){
 
 Socket::~Socket(){
     if (this->socketfd != -1)
-        ::close(this->socketfd);
+        this->close();
 }

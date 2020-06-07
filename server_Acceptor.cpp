@@ -8,7 +8,7 @@
 Acceptor::Acceptor(const char* port, NumberList&& numbers): 
                                                 socket(Socket()), 
                                                 numbers(numbers),
-                                                continueExecution(true){
+                                                continueExecution(false){
     this->socket.bindAndListen(port);
 }
 
@@ -37,6 +37,7 @@ void Acceptor::joinAndWaitClientHandlers(){
 }
 
 void Acceptor::run(){
+    continueExecution = true;
     while (continueExecution){
         try {
             Socket newSocket = socket.accept();
@@ -56,4 +57,10 @@ void Acceptor::run(){
 void Acceptor::shutdown(){
     continueExecution = false;
     socket.close();
+}
+
+Acceptor::~Acceptor(){
+    this->shutdown();
+    if (this->joinable())
+        this->join();
 }

@@ -11,7 +11,8 @@ class Acceptor: public Thread{
     private:
         Socket socket;
         NumberList numbers;
-        bool continueExecution;
+        //bool continueExecution;
+        std::atomic<bool> continueExecution;
         std::vector<ClientHandler*> clients;
         PointsTracker points;
         void joinClientHandlers();
@@ -22,6 +23,7 @@ class Acceptor: public Thread{
         void run();
         void shutdown();
         Acceptor(Acceptor&&) = default;
+        ~Acceptor();
 };
 
 #endif

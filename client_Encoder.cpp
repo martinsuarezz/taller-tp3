@@ -31,7 +31,14 @@ ssize_t Encoder::stringToULong(std::string number){
         if (digit < '0' || digit > '9')
             return -1;
     }
-    return std::stoi(number);
+    int returnNumber;
+    try{
+        returnNumber = std::stoi(number);
+    }
+    catch (std::out_of_range& e){
+        returnNumber = -1;
+    } 
+    return (ssize_t) returnNumber;
 }
 
 std::vector<char> Encoder::encode(std::string command){

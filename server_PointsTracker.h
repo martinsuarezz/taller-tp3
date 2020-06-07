@@ -6,11 +6,11 @@ class PointsTracker{
     private:
         int winners;
         int losers;
+        void addWinner();
+        void addLoser();
 
     public:
         PointsTracker(): winners(0), losers(0) {}
-        void addWinner();
-        void addLoser();
         void printStats();
         void operator()(int result);
 };
